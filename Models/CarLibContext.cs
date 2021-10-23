@@ -18,6 +18,7 @@ namespace CarLib.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Model>().ToTable("Model");
             modelBuilder.Entity<Brand>().ToTable("Brand");
         }
