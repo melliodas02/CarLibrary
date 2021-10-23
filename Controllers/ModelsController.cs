@@ -47,7 +47,7 @@ namespace CarLib.Controllers
         // GET: Models/Create
         public IActionResult Create()
         {
-            ViewData["BrandId"] = new SelectList(_context.Brands, "ID", "ID");
+            ViewData["BrandId"] = new SelectList(_context.Brands, "ID", "Name");
             return View();
         }
 
