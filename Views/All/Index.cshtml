@@ -4,17 +4,17 @@
     ViewData["Title"] = "Группировка";
 }
 
-<h1>Группирока</h1>
+<h1>Группировка</h1>
 
 <div class="container">
     @foreach(var b in Model)
     {
-        <div class="row text-right border mb-2">
-            <h3 class="col text-center col-sm-4">@Html.DisplayFor(model => b.Name)</h3>
-            <div class="col col-sm-8 justify-content-end">
+        <div class="row mb-5">
+            <h3 class="col text-center col-2 col-sm-2">@Html.DisplayFor(model => b.Name)</h3>
+            <div class="col col-10 col-sm-10 justify-content-end">
                 @foreach (var m in b.Models)
                 {
-                    <div class="col-sm-8 border text-center">
+                    <div class="col-sm-8 border text-right justify-content-end">
                         <h3 style="@(m.Active?"color:black;":"color:gray")">@Html.DisplayFor(model => m.Name)</h3>
                     </div>
                     }
