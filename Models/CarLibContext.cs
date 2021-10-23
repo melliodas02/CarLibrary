@@ -12,6 +12,7 @@ namespace CarLib.Models
         { 
         }
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<Brand> Brands { get; set; }
 
