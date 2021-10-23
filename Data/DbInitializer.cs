@@ -90,6 +90,10 @@ namespace CarLib.Data
             User users = new User { Email = "poseydonplay02@gmail.com", Password = "Gangsta14@. " };
             context.Users.Add(users);
             context.SaveChanges();
+
+            User users2 = new User { Email = "admin@gmail.com", Password = "admin" };
+            context.Users.Add(users2);
+            context.SaveChanges();
         }
     }
 }

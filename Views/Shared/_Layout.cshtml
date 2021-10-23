@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,6 +7,7 @@
     <title>@ViewData["Title"] - CarLib</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
 </head>
 <body>
     <header>
@@ -17,18 +19,29 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Главная</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @(User.Identity.IsAuthenticated?"":"d-none")">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Brands" asp-action="Index">Марки</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @(User.Identity.IsAuthenticated?"":"d-none")">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Models" asp-action="Index">Модели</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @(User.Identity.IsAuthenticated?"":"d-none")">
                             <a class="nav-link text-dark" asp-area="" asp-controller="All" asp-action="Index">Группировка</a>
+                        </li>
+
+                        <li class="nav-item ml-1 @(User.Identity.IsAuthenticated?"d-none":"")">
+                            <a class="nav-link text-dark btn btn-success" asp-area="" asp-controller="Account" asp-action="Login">Войти</a>
+                        </li>
+                        <li class="nav-item ml-1 @(User.Identity.IsAuthenticated?"d-none":"")">
+                            <a class="nav-link text-dark btn btn-success" asp-area="" asp-controller="Account" asp-action="Register">Регистрация</a>
+                        </li>
+
+                        <li class="nav-item ml-1 @(User.Identity.IsAuthenticated?"":"d-none")">
+                            <a class="nav-link text-dark btn btn-success" asp-area="" asp-controller="Account" asp-action="Logout">Выйти</a>
                         </li>
                     </ul>
                 </div>
