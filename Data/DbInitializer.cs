@@ -87,10 +87,9 @@ namespace CarLib.Data
             }
             context.SaveChanges();
 
-            User user = new User[]
-            {
-                new User { Email = "poseydonplay02@gmail.com", Password = "Gangsta14@. " }
-            };
+            User users = new User { Email = "poseydonplay02@gmail.com", Password = "Gangsta14@. " };
+            context.Users.Add(users);
+            context.SaveChanges();
         }
     }
 }
