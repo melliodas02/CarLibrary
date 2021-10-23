@@ -19,10 +19,39 @@ namespace CarLib.Controllers
         }
 
         // GET: Models
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
+            ViewBag.NameSortParam = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.BrandSortParam = String.IsNullOrEmpty(sortOrder) ? "brand_desc" : "brand";
+            ViewBag.ActiveSortParam = String.IsNullOrEmpty(sortOrder) ? "active_desc" : "active";
+
             var carLibContext = _context.Models.Include(m => m.Brand);
-            return View(await carLibContext.ToListAsync());
+
+            var models = from s in carLibContext select s;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    models = models.OrderByDescending(s => s.Name);
+                    break;
+                case "brand":
+                    models = models.OrderBy(s => s.BrandId);
+                    break;
+                case "brand_desc":
+                    models = models.OrderByDescending(s => s.BrandId);
+                    break;
+                case "active":
+                    models = models.OrderBy(s => s.Active);
+                    break;
+                case "active_desc":
+                    models = models.OrderByDescending(s => s.Active);
+                    break;
+                default:
+                    models = models.OrderBy(s => s.Name);
+                    break;
+            }
+
+            return View(await models.ToListAsync());
         }
 
         // GET: Models/Details/5

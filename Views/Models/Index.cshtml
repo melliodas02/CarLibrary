@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<CarLib.Models.Model>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Модели";
 }
 
-<h1>Index</h1>
+<h1>Модели</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,13 +13,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.ActionLink("Название модели", "Index", new { sortOrder = ViewBag.NameSortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Active)
+                @Html.ActionLink("Актуальность", "index", new { sortOrder = ViewBag.ActiveSortParam })
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Brand)
+                @Html.ActionLink("Марка", "Index", new { sortOrder = ViewBag.BrandSortParam })
             </th>
             <th></th>
         </tr>
